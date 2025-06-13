@@ -2,40 +2,40 @@
   <div class="bg-gray-100 p-8 rounded shadow-md">
     <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Lista de Usuarios</h2>
     <div class="mb-4 text-right">
-      <button @click="abrirFormularioCrear" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+      <button @click="abrirFormularioCrear" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
         Crear Usuario
       </button>
     </div>
     <div v-if="loading" class="text-gray-500">Cargando usuarios...</div>
     <div v-else>
-      <div class="overflow-x-auto">
-        <table class="min-w-full bg-white">
-          <thead>
+      <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th class="py-2 text-center px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">ID</th>
-              <th class="py-2 text-center px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Usuario</th>
-              <th class="py-2 text-center px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Nombres</th>
-              <th class="py-2 text-center px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Apellidos</th>
-              <th class="py-2 text-center px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Activo</th>
-              <th class="py-2 text-center px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Email</th>
-              <th class="py-2 text-center px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Acciones</th>
+              <th scope="col" class="px-6 py-3">ID</th>
+              <th scope="col" class="px-6 py-3">Usuario</th>
+              <th scope="col" class="px-6 py-3">Nombres</th>
+              <th scope="col" class="px-6 py-3">Apellidos</th>
+              <th scope="col" class="px-6 py-3">Activo</th>
+              <th scope="col" class="px-6 py-3">Email</th>
+              <th scope="col" class="px-6 py-3">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="usuario in usuarios" :key="usuario.id_usuario" class="hover:bg-gray-100">
-              <td class="py-2 px-4 border-b border-gray-200">{{ usuario.id_usuario }}</td>
-              <td class="py-2 px-4 border-b border-gray-200">{{ usuario.usuario }}</td>
-              <td class="py-2 px-4 border-b border-gray-200">{{ usuario.nombres }}</td>
-              <td class="py-2 px-4 border-b border-gray-200">{{ usuario.apellidos }}</td>
-              <td class="py-2 px-4 border-b border-gray-200">
+            <tr v-for="usuario in usuarios" :key="usuario.id_usuario" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+              <td class="px-6 py-4">{{ usuario.id_usuario }}</td>
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ usuario.usuario }}</td>
+              <td class="px-6 py-4">{{ usuario.nombres }}</td>
+              <td class="px-6 py-4">{{ usuario.apellidos }}</td>
+              <td class="px-6 py-4">
                 <span :class="usuario.activo ? 'text-green-500' : 'text-red-500'">
                   {{ usuario.activo ? 'Sí' : 'No' }}
                 </span>
               </td>
-              <td class="py-2 px-4 border-b border-gray-200">{{ usuario.email }}</td>
-              <td class="py-2 px-4 border-b border-gray-200 space-x-2">
-                <button @click="editarUsuario(usuario)" class="bg-yellow-400 text-white px-3 py-1 rounded">Editar</button>
-                <button @click="eliminar(usuario.id_usuario)" class="bg-red-500 text-white px-3 py-1 rounded">Eliminar</button>
+              <td class="px-6 py-4">{{ usuario.email }}</td>
+              <td class="px-6 py-4 space-x-2">
+                <button @click="editarUsuario(usuario)" class="focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Editar</button>
+                <button @click="eliminar(usuario.id_usuario)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Eliminar</button>
               </td>
             </tr>
           </tbody>
